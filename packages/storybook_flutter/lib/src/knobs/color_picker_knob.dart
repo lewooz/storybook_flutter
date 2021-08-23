@@ -28,23 +28,59 @@ class ColorPickerKnobWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ListTile(
-    subtitle: Container(
-      color: value,
-      padding: const EdgeInsets.all(10),
-      child:  Center(
-        child: SingleChildScrollView(
-          child: ColorPicker(
-            pickerColor: value,
-            onColorChanged: (color)=> context.read<StoryProvider>().update(label, color),
-            colorPickerWidth: 250,
-            pickerAreaHeightPercent: 0.7,
-            enableAlpha: true,
-            displayThumbColor: true,
-            showLabel: true,
-            paletteType: PaletteType.hsv,
-            pickerAreaBorderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(2),
-              topRight: Radius.circular(2),
+    subtitle: InkWell(
+      onTap: (){
+        showDialog<Color>(
+            context: context,
+            barrierDismissible: false,
+            builder: (context){
+              Color selectedColor = value;
+              return AlertDialog(
+                titlePadding: EdgeInsets.zero,
+                contentPadding: EdgeInsets.zero,
+                actions: [TextButton(
+                    onPressed: () {
+                      Navigator.pop(context, selectedColor);
+                    },
+                    child: const Text('Select Color', style: TextStyle(color: Colors.black))),],
+                content: SingleChildScrollView(
+                  child: ColorPicker(
+                    pickerColor: value,
+                    onColorChanged: (color)=> selectedColor = color,
+                    colorPickerWidth: 300,
+                    pickerAreaHeightPercent: 0.7,
+                    enableAlpha: true,
+                    displayThumbColor: true,
+                    showLabel: true,
+                    paletteType: PaletteType.hsv,
+                    pickerAreaBorderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(2),
+                      topRight: Radius.circular(2),
+                    ),
+                  ),
+                ),
+              );
+            }
+        ).then((newColor) => context.read<StoryProvider>().update(label, newColor),);
+      },
+      child: Container(
+        color: value,
+        padding: const EdgeInsets.all(10),
+        child:  Center(
+          child: SingleChildScrollView(
+            child: ColorPicker(
+              pickerColor: value,
+              onColorChanged: (color)=> context.read<StoryProvider>().update(label, color),
+              colorPickerWidth: 300,
+              pickerAreaHeightPercent: 0.7,
+              enableAlpha: true,
+              displayThumbColor: true,
+              showLabel: true,
+              paletteType: PaletteType.hsv,
+              pickerAreaBorderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(2),
+                topRight: Radius.circular(2),
+              ),
             ),
           ),
         ),

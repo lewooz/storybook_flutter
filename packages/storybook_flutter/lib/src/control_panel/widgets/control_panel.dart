@@ -69,7 +69,7 @@ class ControlPanel extends StatelessWidget {
         children: [
           Positioned(
             left: 0,
-            right: 0,
+            right: 60,
             top: 0,
             bottom: 0,
             child: SizedBox(

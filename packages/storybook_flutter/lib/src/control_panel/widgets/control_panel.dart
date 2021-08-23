@@ -69,11 +69,11 @@ class ControlPanel extends StatelessWidget {
         children: [
           Positioned(
             left: 0,
-            right: isHorizontal ? null : 0,
+            right: 0,
             top: 0,
-            bottom: isHorizontal ? 0 : null,
+            bottom: 0,
             child: SizedBox(
-              width: isHorizontal ? _contentSize : null,
+              width: isHorizontal ? 350 : null,
               height: isHorizontal ? null : _contentSize,
               child: plugin == null ? Container() : buildPluginSettings(plugin),
             ),

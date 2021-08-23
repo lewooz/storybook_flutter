@@ -28,41 +28,23 @@ class ColorPickerKnobWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ListTile(
-    subtitle: InkWell(
-      onTap: (){
-        showDialog<void>(
-            context: context,
-            builder: (context)=>
-                AlertDialog(
-                    titlePadding: EdgeInsets.zero,
-                    contentPadding: EdgeInsets.zero,
-                    content: SingleChildScrollView(
-                      child: ColorPicker(
-                        pickerColor: value,
-                        onColorChanged: (color)=> context.read<StoryProvider>().update(label, color),
-                        colorPickerWidth: 300,
-                        pickerAreaHeightPercent: 0.7,
-                        enableAlpha: true,
-                        displayThumbColor: true,
-                        showLabel: true,
-                        paletteType: PaletteType.hsv,
-                        pickerAreaBorderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(2),
-                          topRight: Radius.circular(2),
-                        ),
-                      ),
-                    ),
-                )
-        );
-      },
-      child: Container(
-        color: value,
-        padding: const EdgeInsets.all(10),
-        child: const Center(
-          child: Text(
-            'Pick Color!',
-            style: TextStyle(
-                color: Colors.black
+    subtitle: Container(
+      color: value,
+      padding: const EdgeInsets.all(10),
+      child:  Center(
+        child: SingleChildScrollView(
+          child: ColorPicker(
+            pickerColor: value,
+            onColorChanged: (color)=> context.read<StoryProvider>().update(label, color),
+            colorPickerWidth: 300,
+            pickerAreaHeightPercent: 0.7,
+            enableAlpha: true,
+            displayThumbColor: true,
+            showLabel: true,
+            paletteType: PaletteType.hsv,
+            pickerAreaBorderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(2),
+              topRight: Radius.circular(2),
             ),
           ),
         ),

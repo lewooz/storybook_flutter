@@ -1,6 +1,8 @@
 import 'package:collection/collection.dart' show IterableExtension;
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:storybook_flutter/src/knobs/bool_knob.dart';
+import 'package:storybook_flutter/src/knobs/color_picker_knob.dart';
 import 'package:storybook_flutter/src/knobs/knobs.dart';
 import 'package:storybook_flutter/src/knobs/select_knob.dart';
 import 'package:storybook_flutter/src/knobs/slider_knob.dart';
@@ -41,6 +43,11 @@ class StoryProvider extends ChangeNotifier implements KnobsBuilder {
   @override
   bool boolean({required String label, bool initial = false}) =>
       _addKnob(BoolKnob(label, initial));
+
+  @override
+  Color color({required String label, Color initial = Colors.white}) =>
+      _addKnob(ColorPickerKnob(label, initial));
+
 
   @override
   String text({required String label, String initial = ''}) =>

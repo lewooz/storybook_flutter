@@ -31,6 +31,8 @@ abstract class KnobsBuilder {
   /// Creates text input field with [label] and [initial] value.
   String text({required String label, String initial = ''});
 
+  Color color({required String label, Color initial});
+
   double slider({
     required String label,
     double initial = 0,

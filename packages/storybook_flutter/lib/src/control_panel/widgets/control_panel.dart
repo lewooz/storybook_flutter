@@ -43,7 +43,7 @@ class ControlPanel extends StatelessWidget {
       final buildSettings = plugin.settingsBuilder!;
 
       return Container(
-        width: 380,
+        width: 420,
         decoration: BoxDecoration(border: border, color: theme.cardColor),
         child: buildSettings(
           context,
@@ -63,7 +63,7 @@ class ControlPanel extends StatelessWidget {
       key: ValueKey(direction),
       curve: Curves.easeOut,
       duration: const Duration(milliseconds: 250),
-      width: isHorizontal ? 450 : null,
+      width: isHorizontal ? 480 : null,
       height: isHorizontal ? null : panelSize,
       child: Stack(
         children: [
@@ -73,7 +73,7 @@ class ControlPanel extends StatelessWidget {
             top: 0,
             bottom: 0,
             child: SizedBox(
-              width: isHorizontal ? 380 : null,
+              width: isHorizontal ? 420 : null,
               height: isHorizontal ? null : _contentSize,
               child: plugin == null ? Container() : buildPluginSettings(plugin),
             ),

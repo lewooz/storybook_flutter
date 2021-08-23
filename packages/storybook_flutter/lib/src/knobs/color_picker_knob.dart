@@ -10,9 +10,9 @@ class ColorPickerKnob extends Knob<Color> {
 
   @override
   Widget build() => ColorPickerKnobWidget(
-    label: label,
-    value: value,
-  );
+        label: label,
+        value: value,
+      );
 }
 
 class ColorPickerKnobWidget extends StatelessWidget {
@@ -25,54 +25,52 @@ class ColorPickerKnobWidget extends StatelessWidget {
   final String label;
   final Color value;
 
-
   @override
   Widget build(BuildContext context) => ListTile(
-    subtitle: InkWell(
-      onTap: (){
-        showDialog<Color>(
-            context: context,
-            barrierDismissible: false,
-            builder: (context){
-              Color selectedColor = value;
-              return AlertDialog(
-                titlePadding: EdgeInsets.zero,
-                contentPadding: EdgeInsets.zero,
-                actions: [TextButton(
-                    onPressed: () {
-                      Navigator.pop(context, selectedColor);
-                    },
-                    child: const Text('Select Color', style: TextStyle(color: Colors.black))),],
-                content: SingleChildScrollView(
-                  child: ColorPicker(
-                    pickerColor: value,
-                    onColorChanged: (color)=> selectedColor = color,
-                    colorPickerWidth: 300,
-                    pickerAreaHeightPercent: 0.7,
-                    enableAlpha: true,
-                    displayThumbColor: true,
-                    showLabel: true,
-                    paletteType: PaletteType.hsv,
-                    pickerAreaBorderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(2),
-                      topRight: Radius.circular(2),
+        subtitle: InkWell(
+          onTap: () {
+            showDialog<Color>(
+                context: context,
+                barrierDismissible: false,
+                builder: (context) {
+                  Color selectedColor = value;
+                  return AlertDialog(
+                    titlePadding: EdgeInsets.zero,
+                    contentPadding: EdgeInsets.zero,
+                    actions: [
+                      TextButton(
+                          onPressed: () {
+                            Navigator.pop(context, selectedColor);
+                          },
+                          child: const Text('Select Color', style: TextStyle(color: Colors.black))),
+                    ],
+                    content: SingleChildScrollView(
+                      child: ColorPicker(
+                        pickerColor: value,
+                        onColorChanged: (color) => selectedColor = color,
+                        colorPickerWidth: 300,
+                        pickerAreaHeightPercent: 0.7,
+                        enableAlpha: true,
+                        displayThumbColor: true,
+                        showLabel: true,
+                        paletteType: PaletteType.hsv,
+                        pickerAreaBorderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(2),
+                          topRight: Radius.circular(2),
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-              );
-            }
-        ).then((newColor) => context.read<StoryProvider>().update(label, newColor),);
-      },
-      child: Container(
-        color: value,
-        width: 50,
-        height: 50,
-          decoration: const BoxDecoration(
-            shape: BoxShape.circle
+                  );
+                }).then(
+              (newColor) => context.read<StoryProvider>().update(label, newColor),
+            );
+          },
+          child: Container(
+            width: 50,
+            height: 50,
+            decoration: BoxDecoration(color: value, shape: BoxShape.circle),
           ),
-      ),
-    ),
-    title: Text('$label)'),
-  );
-
+        ),
+        title: Text('$label)'),
+      );
 }

@@ -65,25 +65,11 @@ class ColorPickerKnobWidget extends StatelessWidget {
       },
       child: Container(
         color: value,
-        padding: const EdgeInsets.all(10),
-        child:  Center(
-          child: SingleChildScrollView(
-            child: ColorPicker(
-              pickerColor: value,
-              onColorChanged: (color)=> context.read<StoryProvider>().update(label, color),
-              colorPickerWidth: 300,
-              pickerAreaHeightPercent: 0.7,
-              enableAlpha: true,
-              displayThumbColor: true,
-              showLabel: true,
-              paletteType: PaletteType.hsv,
-              pickerAreaBorderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(2),
-                topRight: Radius.circular(2),
-              ),
-            ),
+        width: 50,
+        height: 50,
+          decoration: const BoxDecoration(
+            shape: BoxShape.circle
           ),
-        ),
       ),
     ),
     title: Text('$label)'),

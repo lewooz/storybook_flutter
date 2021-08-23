@@ -71,6 +71,6 @@ class ColorPickerKnobWidget extends StatelessWidget {
             decoration: BoxDecoration(color: value, shape: BoxShape.circle),
           ),
         ),
-        title: Text('$label)'),
+        title: Text('$label'),
       );
 }

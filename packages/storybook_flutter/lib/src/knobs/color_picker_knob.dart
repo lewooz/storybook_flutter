@@ -36,7 +36,7 @@ class ColorPickerKnobWidget extends StatelessWidget {
           child: ColorPicker(
             pickerColor: value,
             onColorChanged: (color)=> context.read<StoryProvider>().update(label, color),
-            colorPickerWidth: 300,
+            colorPickerWidth: 250,
             pickerAreaHeightPercent: 0.7,
             enableAlpha: true,
             displayThumbColor: true,

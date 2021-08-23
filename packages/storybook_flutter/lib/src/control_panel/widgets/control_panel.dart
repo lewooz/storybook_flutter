@@ -62,7 +62,7 @@ class ControlPanel extends StatelessWidget {
       key: ValueKey(direction),
       curve: Curves.easeOut,
       duration: const Duration(milliseconds: 250),
-      width: isHorizontal ? panelSize : null,
+      width: isHorizontal ? 310 : null,
       height: isHorizontal ? null : panelSize,
       child: Stack(
         children: [
